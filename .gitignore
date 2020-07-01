@@ -5,6 +5,8 @@
 !/public/media/image/
 /public/media/image/*
 !/public/media/image/.gitignore
+/public/bootstrap-theme
+/public/build
 
 /node_modules
 
