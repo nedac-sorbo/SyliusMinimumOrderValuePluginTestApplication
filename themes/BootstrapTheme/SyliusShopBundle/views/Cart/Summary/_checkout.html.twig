@@ -1,0 +1,19 @@
+{% import "@SyliusShop/Common/Macro/money.html.twig" as money %}
+
+{% set minimumOrderValue = cart.channel.minimumOrderValue %}
+{% set total = sylius_order_items_subtotal(cart) %}
+
+{% if total >= minimumOrderValue %}
+    {% set buttonClass = "btn btn-primary btn-block" %}
+{% else %}
+    {% set buttonClass = "btn btn-primary btn-block disabled" %}
+    {% set formattedMinimum = money.convertAndFormat(minimumOrderValue) %}
+    {% set formattedDifference = money.convertAndFormat(minimumOrderValue - total) %}
+    <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">{{ 'nedac_sylius_minimum_order_value_plugin.ui.attention'|trans }}</h4>
+        <p {{ sylius_test_html_attribute('minimum-order-value-plugin-message') }}>{{ 'nedac_sylius_minimum_order_value_plugin.ui.minimum_not_yet_reached'|trans({ '%minimumOrderValue% ': formattedMinimum, '%difference%': formattedDifference })|raw('br') }}</p>
+    </div>
+{% endif %}
+<a href="{{ path('sylius_shop_checkout_start') }}" class="{{ buttonClass }}" {{ sylius_test_html_attribute('checkout-button') }}>
+    {{ 'sylius.ui.checkout'|trans }}
+</a>
