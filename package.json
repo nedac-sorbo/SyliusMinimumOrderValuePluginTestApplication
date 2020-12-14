@@ -7,7 +7,7 @@
     "axios": "^0.19.2",
     "babel-polyfill": "^6.26.0",
     "bootstrap": "^4.5.0",
-    "bootstrap.native": "^3.0.0",
+    "bootstrap.native": "^3.0.9",
     "chart.js": "^2.9.3",
     "form-serialize": "^0.7.2",
     "glightbox": "^3.0.0",
